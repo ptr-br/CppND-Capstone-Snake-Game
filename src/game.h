@@ -2,10 +2,13 @@
 #define GAME_H
 
 #include <random>
+#include <mutex>
 #include "SDL.h"
 #include "controller.h"
 #include "renderer.h"
 #include "snake.h"
+
+class Controller; 
 
 class Game {
  public:
@@ -14,10 +17,15 @@ class Game {
            std::size_t target_frame_duration);
   int GetScore() const;
   int GetSize() const;
+  int poisoned() const;
+
+  void TogglePause();
+  void PoisonTimer(bool *poisoned);
 
  private:
   Snake snake;
   SDL_Point food;
+  bool _isRunning = true;
 
   std::random_device dev;
   std::mt19937 engine;
@@ -25,6 +33,9 @@ class Game {
   std::uniform_int_distribution<int> random_h;
 
   int score{0};
+  bool _poisoned;
+
+  static std::mutex _mtx;
 
   void PlaceFood();
   void Update();

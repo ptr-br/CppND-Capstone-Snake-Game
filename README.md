@@ -1,6 +1,6 @@
 # CPPND: Capstone Snake Game Example
 
-This is a starter repo for the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
+This is my implementation of the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213) snake capstone project. The code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
 
 <img src="snake_game.gif"/>
 
@@ -44,3 +44,30 @@ This work is licensed under a
 [cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
 [cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
 [cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
+
+## Poject Rubic 
+### Loops / Functions / IO
+Success Criteria | Example
+--- | ---
+The project reads data from file and process the data, or the program write data to file | [UserData](https://github.com/ptr-br/CppND-Capstone-Snake-Game/blob/master/src/userData.h#L7) class [reads](https://github.com/ptr-br/CppND-Capstone-Snake-Game/blob/d45726c99845ae2b09db8970da6cdb9223a8e9b7/src/userData.cpp#L17) previous runs from a file and [stores](https://github.com/ptr-br/CppND-Capstone-Snake-Game/blob/master/src/userData.cpp#L51) statistics from current run.
+The project accepts user input and processes the input. | In [main.cpp](https://github.com/ptr-br/CppND-Capstone-Snake-Game/blob/master/src/main.cpp#L23) the user is requested to give a user name before playing.
+
+### Object Oriented Programming
+Success Criteria | Example
+ --- | ---
+ One or more classes are added to the project with appropriate access specifiers for class members. | [UserData](https://github.com/ptr-br/CppND-Capstone-Snake-Game/blob/master/src/userData.h#L7) class is added to the snake game.
+ Class constructors utilize member initialization lists. | Constructor of [UserData](https://github.com/ptr-br/CppND-Capstone-Snake-Game/blob/d45726c99845ae2b09db8970da6cdb9223a8e9b7/src/userData.cpp#L10C22-L10C22) is using an initialization list.
+ Classes abstract implementation details from their interfaces.| Function names are self-describing or comments are added.
+
+ ### Memory Mangement 
+ Success Criteria | Example
+ --- | ---
+ The project makes use of references in function declarations. | Examples of pass-by-reference [here](https://github.com/ptr-br/CppND-Capstone-Snake-Game/blob/d45726c99845ae2b09db8970da6cdb9223a8e9b7/src/userData.cpp#L12) and [here](https://github.com/ptr-br/CppND-Capstone-Snake-Game/blob/d45726c99845ae2b09db8970da6cdb9223a8e9b7/src/userData.cpp#L17C63-L17C77)
+ The project uses destructors appropriately. | [Destructor](https://github.com/ptr-br/CppND-Capstone-Snake-Game/blob/d45726c99845ae2b09db8970da6cdb9223a8e9b7/src/renderer.cpp#L37) of Renderer class is modified and [Run member function](https://github.com/ptr-br/CppND-Capstone-Snake-Game/blob/d45726c99845ae2b09db8970da6cdb9223a8e9b7/src/game.cpp#L61) is adapted to properly close game after losing.
+ The project uses smart pointers instead of raw pointers. | [Renderer](https://github.com/ptr-br/CppND-Capstone-Snake-Game/blob/d45726c99845ae2b09db8970da6cdb9223a8e9b7/src/main.cpp#L28) and [Controller](https://github.com/ptr-br/CppND-Capstone-Snake-Game/blob/d45726c99845ae2b09db8970da6cdb9223a8e9b7/src/main.cpp#L29) use smart pointers.
+
+### Concurrency 
+ Success Criteria | Example
+ --- | ---
+ The project uses multithreading. | There is a 10% chance that the fruit is poisoned. If so, a new [thread](https://github.com/ptr-br/CppND-Capstone-Snake-Game/blob/d45726c99845ae2b09db8970da6cdb9223a8e9b7/src/game.cpp#L119) is started and will switch the arrow directions.
+ A mutex or lock is used in the project. | A [unique lock](https://github.com/ptr-br/CppND-Capstone-Snake-Game/blob/d45726c99845ae2b09db8970da6cdb9223a8e9b7/src/game.cpp#L86) is used to protect console output of the thread.
